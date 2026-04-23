@@ -3,66 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asaduzzaman Likhon | Cyber Architect</title>
+<title>Asaduzzaman Likhon | ASADIT96-stack</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root{
---cyan:#00f2ff;
---purple:#bc13fe;
---dark:#050505;
---glass:rgba(255,255,255,0.03);
+--blue:#00c3ff;
+--dark:#05070f;
+--glass:rgba(255,255,255,0.05);
+--glow:0 0 25px rgba(0,195,255,0.6);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-background: radial-gradient(circle at top,#0a0a0a,#000);
+background: radial-gradient(circle at top,#0a1020,#000);
 color:#fff;
 font-family:'Fira Code',monospace;
 overflow-x:hidden;
-scroll-behavior:smooth;
-cursor:crosshair;
 }
 
-/* INTRO */
-#intro{
+/* GRID BACKGROUND */
+body::before{
+content:"";
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-.intro-logo{
-width:150px;
-animation:zoom 2s ease-in-out;
-}
-@keyframes zoom{
-0%{transform:scale(0.5);opacity:0;}
-100%{transform:scale(1);opacity:1;}
+inset:0;
+background-image:
+linear-gradient(rgba(0,195,255,0.06) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,195,255,0.06) 1px,transparent 1px);
+background-size:40px 40px;
+z-index:-2;
 }
 
 /* PARTICLES */
-#particles{
+canvas{
 position:fixed;
 top:0;left:0;
-width:100%;height:100%;
 z-index:-1;
 }
 
 /* NAV */
 nav{
-position:fixed;width:100%;
-padding:20px 10%;
-display:flex;justify-content:space-between;
+position:fixed;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 10%;
 background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--cyan);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(0,195,255,0.3);
 z-index:1000;
 }
 
@@ -71,11 +63,13 @@ display:flex;
 align-items:center;
 gap:10px;
 font-family:'Orbitron';
-color:var(--cyan);
+color:var(--blue);
+text-shadow:var(--glow);
 }
-.logo-img{
-width:40px;
-filter: drop-shadow(0 0 10px #00f2ff);
+
+.logo img{
+width:38px;
+filter:drop-shadow(0 0 10px var(--blue));
 }
 
 /* HERO */
@@ -86,49 +80,81 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-margin-top:80px;
+padding:0 20px;
 }
-.hero-logo{
+
+.hero img{
 width:120px;
-margin-bottom:20px;
-filter: drop-shadow(0 0 20px #00f2ff);
+animation:float 4s ease-in-out infinite;
+filter:drop-shadow(0 0 20px var(--blue));
 }
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
 .hero h1{
-font-size:clamp(2rem,8vw,5rem);
-background:linear-gradient(90deg,#fff,var(--cyan),var(--purple));
+font-size:clamp(2rem,6vw,4.5rem);
+background:linear-gradient(90deg,#fff,var(--blue));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 #typewriter{
-color:var(--cyan);
-margin-top:20px;
+margin-top:10px;
+color:var(--blue);
 }
 
-/* GRID */
-section{padding:120px 10%;}
+/* BUTTON */
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 18px;
+border:1px solid var(--blue);
+color:var(--blue);
+border-radius:8px;
+text-decoration:none;
+transition:0.3s;
+margin-right:10px;
+}
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+.btn:hover{
+background:var(--blue);
+color:#000;
+box-shadow:var(--glow);
+}
+
+/* SECTIONS */
+section{
+padding:100px 10%;
 }
 
 h2{
-color:var(--cyan);
-margin-bottom:30px;
-border-left:4px solid var(--cyan);
+color:var(--blue);
+margin-bottom:20px;
+border-left:4px solid var(--blue);
 padding-left:10px;
+text-shadow:var(--glow);
 }
 
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+/* CARD */
 .card{
-padding:30px;
 background:var(--glass);
-border-left:3px solid var(--cyan);
+padding:20px;
+border:1px solid rgba(0,195,255,0.2);
+border-radius:12px;
 backdrop-filter:blur(15px);
-transition:all 0.5s ease;
 opacity:0;
-transform:translateY(50px);
+transform:translateY(40px);
+transition:0.4s;
 }
 
 .card.show{
@@ -137,119 +163,143 @@ transform:translateY(0);
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 40px rgba(0,242,255,.2);
+transform:translateY(-8px);
+box-shadow:0 0 30px rgba(0,195,255,0.25);
 }
 
-/* BUTTON */
-.btn{
-margin-top:15px;
-padding:10px 20px;
-border:1px solid var(--cyan);
-color:var(--cyan);
-text-decoration:none;
-display:inline-block;
-margin-right:10px;
-transition:.3s;
+/* SKILL */
+.skill{
+margin:12px 0;
 }
-.btn:hover{
-background:var(--cyan);
-color:#000;
+
+.bar{
+width:100%;
+height:8px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
 }
-.btn:active{
-transform:scale(0.95);
+
+.bar span{
+display:block;
+height:100%;
+background:var(--blue);
+box-shadow:var(--glow);
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:40px;
+border-top:1px solid rgba(0,195,255,0.2);
+color:#777;
+}
+
+footer span{
+color:var(--blue);
 }
 
 /* MOBILE */
 @media(max-width:768px){
-nav{
-flex-direction:column;
-text-align:center;
-}
-.hero h1{
-font-size:2.5rem;
-}
-}
-
-footer{
-text-align:center;
-padding:40px;
-color:#444;
+nav{flex-direction:column;gap:8px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div id="intro">
-<img src="logo.png" class="intro-logo">
-</div>
-
 <canvas id="particles"></canvas>
 
 <nav>
 <div class="logo">
-<img src="logo.png" class="logo-img">
-ASADIT96
+<img src="logo.png">
+ASADIT96-stack
 </div>
-<div>STATUS: <span style="color:#0f0">SECURE</span></div>
+<div>STATUS: <span style="color:#00ff88">ACTIVE</span></div>
 </nav>
 
 <div class="hero">
-<img src="logo.png" class="hero-logo">
+<img src="logo.png">
 <h1>ASADUZZAMAN LIKHON</h1>
 <p id="typewriter"></p>
-<a href="#projects" class="btn">ENTER SYSTEM</a>
+
+<a class="btn" href="#projects">ENTER PROFILE</a>
+<a class="btn" href="https://github.com/ASADIT96-stack">GITHUB</a>
 </div>
 
 <section>
-<h2>IDENTITY</h2>
-<div class="grid">
-<div class="card"><h3>💻 Web Developer</h3></div>
-<div class="card"><h3>🔐 Cyber Security</h3></div>
+<h2>ABOUT ME</h2>
+<div class="card show">
+Hi, I am <b>Asaduzzaman Likhon</b> — a Web Developer & Cyber Security learner.
+Focused on building modern, secure and futuristic web applications.
+</div>
+</section>
+
+<section>
+<h2>SKILLS</h2>
+<div class="card show">
+
+<div class="skill">HTML
+<div class="bar"><span style="width:95%"></span></div>
+</div>
+
+<div class="skill">CSS
+<div class="bar"><span style="width:90%"></span></div>
+</div>
+
+<div class="skill">JavaScript
+<div class="bar"><span style="width:80%"></span></div>
+</div>
+
+<div class="skill">Cyber Security
+<div class="bar"><span style="width:70%"></span></div>
+</div>
+
 </div>
 </section>
 
 <section id="projects">
 <h2>PROJECTS</h2>
 <div class="grid">
-<div class="card"><h3>🔑 Login System</h3></div>
-<div class="card"><h3>🌐 Portfolio</h3></div>
-<div class="card"><h3>⚡ JS App</h3></div>
+
+<div class="card">Login System UI</div>
+<div class="card">Portfolio Website</div>
+<div class="card">JavaScript App</div>
+
 </div>
 </section>
 
 <section>
 <h2>CONTACT</h2>
-<div class="card">
+<div class="card show">
 
 <p><i class="fas fa-envelope"></i> likhonzaman96@gmail.com</p>
 <p><i class="fas fa-phone"></i> +8801766541452</p>
 
-<a href="https://www.facebook.com/share/1cTzwMDfr1/?mibextid=wwXIfr" class="btn">
-<i class="fab fa-facebook"></i> Facebook
+<a class="btn" href="https://github.com/ASADIT96-stack">
+<i class="fab fa-github"></i> ASADIT96-stack
 </a>
 
-<a href="https://github.com/AsadIT96-stack" class="btn">
-<i class="fab fa-github"></i> GitHub
+<a class="btn" href="https://facebook.com">
+<i class="fab fa-facebook"></i> Facebook
 </a>
 
 </div>
 </section>
 
 <footer>
-<p>© 2026 ASADIT96 | SYSTEM SECURED</p>
+Build by <span>Asaduzzaman Likhon</span> | GitHub: ASADIT96-stack
 </footer>
 
 <script>
-// INTRO HIDE
-setTimeout(()=>{
-document.getElementById("intro").style.display="none";
-},2000);
 
 // TYPEWRITER
-const text=["Web Developer_","Cyber Security Learner_","Building ✌️Asduzzaman likhon_"];
+const text=[
+"Web Developer ⚡",
+"Cyber Security Learner 🔐",
+"GitHub Projects Builder 🚀"
+];
+
 let i=0,j=0,del=false;
 
 function type(){
@@ -258,16 +308,16 @@ document.getElementById("typewriter").innerHTML=w.substring(0,j);
 
 if(!del){
 j++;
-if(j==w.length) del=true;
+if(j===w.length) del=true;
 }else{
 j--;
-if(j==0){
+if(j===0){
 del=false;
 i=(i+1)%text.length;
 }
 }
 
-setTimeout(type,del?50:120);
+setTimeout(type,del?50:100);
 }
 type();
 
@@ -275,34 +325,33 @@ type();
 const c=document.getElementById("particles");
 const ctx=c.getContext("2d");
 
-function resizeCanvas(){
+function resize(){
 c.width=window.innerWidth;
 c.height=window.innerHeight;
 }
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+resize();
+window.addEventListener("resize",resize);
 
-let particles=[];
-for(let i=0;i<60;i++){
-particles.push({
+let p=[];
+for(let i=0;i<80;i++){
+p.push({
 x:Math.random()*c.width,
 y:Math.random()*c.height,
-speed:0.5+Math.random()
+s:0.5+Math.random()
 });
 }
 
 function draw(){
 ctx.clearRect(0,0,c.width,c.height);
 
-particles.forEach(p=>{
-ctx.fillStyle="#00f2ff";
-ctx.fillRect(p.x,p.y,2,2);
+p.forEach(e=>{
+ctx.fillStyle="#00c3ff";
+ctx.fillRect(e.x,e.y,2,2);
 
-p.y+=p.speed;
-
-if(p.y>c.height){
-p.y=0;
-p.x=Math.random()*c.width;
+e.y+=e.s;
+if(e.y>c.height){
+e.y=0;
+e.x=Math.random()*c.width;
 }
 });
 
@@ -310,21 +359,19 @@ requestAnimationFrame(draw);
 }
 draw();
 
-// SCROLL REVEAL
+// SCROLL EFFECT
 const cards=document.querySelectorAll(".card");
 
-function reveal(){
-cards.forEach(card=>{
-const top=card.getBoundingClientRect().top;
-
-if(top < window.innerHeight - 50){
-card.classList.add("show");
+function show(){
+cards.forEach(c=>{
+if(c.getBoundingClientRect().top < window.innerHeight-80){
+c.classList.add("show");
 }
 });
 }
+window.addEventListener("scroll",show);
+show();
 
-window.addEventListener("scroll", reveal);
-reveal();
 </script>
 
 </body>
