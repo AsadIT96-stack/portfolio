@@ -3,41 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asaduzzaman Likhon | ASADIT96-stack</title>
+<title>ASADIT96 | Cyber Security Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Fira+Code&display=swap" rel="stylesheet">
 
 <style>
-:root{
---blue:#00c3ff;
---dark:#05070f;
---glass:rgba(255,255,255,0.05);
---glow:0 0 25px rgba(0,195,255,0.6);
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-background: radial-gradient(circle at top,#0a1020,#000);
-color:#fff;
-font-family:'Fira Code',monospace;
+margin:0;
+font-family:'Fira Code', monospace;
+background:#000;
+color:#00ffcc;
 overflow-x:hidden;
 }
 
-/* GRID BACKGROUND */
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background-image:
-linear-gradient(rgba(0,195,255,0.06) 1px,transparent 1px),
-linear-gradient(90deg,rgba(0,195,255,0.06) 1px,transparent 1px);
-background-size:40px 40px;
-z-index:-2;
-}
-
-/* PARTICLES */
+/* MATRIX BACKGROUND */
 canvas{
 position:fixed;
 top:0;left:0;
@@ -46,15 +26,15 @@ z-index:-1;
 
 /* NAV */
 nav{
-position:fixed;
-width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 10%;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(15px);
-border-bottom:1px solid rgba(0,195,255,0.3);
+padding:15px 8%;
+background:rgba(0,0,0,0.7);
+border-bottom:1px solid #00ffcc;
+backdrop-filter:blur(10px);
+position:fixed;
+width:100%;
 z-index:1000;
 }
 
@@ -63,13 +43,12 @@ display:flex;
 align-items:center;
 gap:10px;
 font-family:'Orbitron';
-color:var(--blue);
-text-shadow:var(--glow);
+color:#00ffcc;
 }
 
 .logo img{
-width:38px;
-filter:drop-shadow(0 0 10px var(--blue));
+width:40px;
+filter:drop-shadow(0 0 10px #00ffcc);
 }
 
 /* HERO */
@@ -80,13 +59,12 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:0 20px;
 }
 
 .hero img{
-width:120px;
+width:140px;
 animation:float 4s ease-in-out infinite;
-filter:drop-shadow(0 0 20px var(--blue));
+filter:drop-shadow(0 0 25px #00ffcc);
 }
 
 @keyframes float{
@@ -94,217 +72,146 @@ filter:drop-shadow(0 0 20px var(--blue));
 50%{transform:translateY(-15px);}
 }
 
-.hero h1{
-font-size:clamp(2rem,6vw,4.5rem);
-background:linear-gradient(90deg,#fff,var(--blue));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+h1{
+font-size:3rem;
+color:#00ffcc;
+text-shadow:0 0 20px #00ffcc;
 }
 
-#typewriter{
+#type{
 margin-top:10px;
-color:var(--blue);
+color:#00ffcc;
 }
 
 /* BUTTON */
 .btn{
-display:inline-block;
-margin-top:15px;
-padding:10px 18px;
-border:1px solid var(--blue);
-color:var(--blue);
-border-radius:8px;
+margin-top:20px;
+padding:10px 20px;
+border:1px solid #00ffcc;
+color:#00ffcc;
 text-decoration:none;
+border-radius:5px;
 transition:0.3s;
-margin-right:10px;
 }
 
 .btn:hover{
-background:var(--blue);
+background:#00ffcc;
 color:#000;
-box-shadow:var(--glow);
+box-shadow:0 0 25px #00ffcc;
 }
 
-/* SECTIONS */
+/* SECTION */
 section{
-padding:100px 10%;
+padding:80px 10%;
 }
 
 h2{
-color:var(--blue);
-margin-bottom:20px;
-border-left:4px solid var(--blue);
+border-left:4px solid #00ffcc;
 padding-left:10px;
-text-shadow:var(--glow);
+color:#00ffcc;
+text-shadow:0 0 10px #00ffcc;
+}
+
+.card{
+background:rgba(0,255,204,0.05);
+padding:20px;
+border:1px solid #00ffcc;
+border-radius:10px;
+margin-top:15px;
+box-shadow:0 0 10px rgba(0,255,204,0.2);
 }
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
-}
-
-/* CARD */
-.card{
-background:var(--glass);
-padding:20px;
-border:1px solid rgba(0,195,255,0.2);
-border-radius:12px;
-backdrop-filter:blur(15px);
-opacity:0;
-transform:translateY(40px);
-transition:0.4s;
-}
-
-.card.show{
-opacity:1;
-transform:translateY(0);
-}
-
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 30px rgba(0,195,255,0.25);
-}
-
-/* SKILL */
-.skill{
-margin:12px 0;
-}
-
-.bar{
-width:100%;
-height:8px;
-background:#111;
-border-radius:20px;
-overflow:hidden;
-}
-
-.bar span{
-display:block;
-height:100%;
-background:var(--blue);
-box-shadow:var(--glow);
 }
 
 /* FOOTER */
 footer{
 text-align:center;
-padding:40px;
-border-top:1px solid rgba(0,195,255,0.2);
-color:#777;
+padding:30px;
+border-top:1px solid #00ffcc;
+color:#666;
 }
 
-footer span{
-color:var(--blue);
-}
-
-/* MOBILE */
-@media(max-width:768px){
-nav{flex-direction:column;gap:8px;}
-}
 </style>
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
+<canvas id="matrix"></canvas>
 
+<!-- NAV -->
 <nav>
 <div class="logo">
-<img src="likhon-logo.png">
-ASADIT96-stack
+<img src="assets/images/likhon-logo.png">
+ASADIT96
 </div>
-<div>STATUS: <span style="color:#00ff88">ACTIVE</span></div>
+<div style="color:#00ffcc;">STATUS: ONLINE</div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-<img src="likhon-logo.png">
+<img src="assets/images/likhon-logo.png">
 <h1>ASADUZZAMAN LIKHON</h1>
-<p id="typewriter"></p>
+<p id="type"></p>
 
-<a class="btn" href="#projects">ENTER PROFILE</a>
-<a class="btn" href="https://github.com/ASADIT96-stack">GITHUB</a>
+<a class="btn" href="#projects">ENTER SYSTEM</a>
 </div>
 
+<!-- ABOUT -->
 <section>
-<h2>ABOUT ME</h2>
-<div class="card show">
-Hi, I am <b>Asaduzzaman Likhon</b> — a Web Developer & Cyber Security learner.
-Focused on building modern, secure and futuristic web applications.
+<h2>ABOUT</h2>
+<div class="card">
+Cyber Security Learner 🔐 | Web Developer 💻  
+Building secure & futuristic web systems.
 </div>
 </section>
 
+<!-- SKILLS -->
 <section>
 <h2>SKILLS</h2>
-<div class="card show">
-
-<div class="skill">HTML
-<div class="bar"><span style="width:95%"></span></div>
-</div>
-
-<div class="skill">CSS
-<div class="bar"><span style="width:90%"></span></div>
-</div>
-
-<div class="skill">JavaScript
-<div class="bar"><span style="width:80%"></span></div>
-</div>
-
-<div class="skill">Cyber Security
-<div class="bar"><span style="width:70%"></span></div>
-</div>
-
+<div class="card">
+HTML | CSS | JavaScript | Cyber Security | Ethical Hacking Basics
 </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
 <h2>PROJECTS</h2>
 <div class="grid">
 
-<div class="card">Login System UI</div>
-<div class="card">Portfolio Website</div>
-<div class="card">JavaScript App</div>
+<div class="card">Cyber Login Panel</div>
+<div class="card">Portfolio System</div>
+<div class="card">JS Security App</div>
 
 </div>
 </section>
 
+<!-- CONTACT -->
 <section>
 <h2>CONTACT</h2>
-<div class="card show">
-
-<p><i class="fas fa-envelope"></i> likhonzaman96@gmail.com</p>
-<p><i class="fas fa-phone"></i> +8801766541452</p>
-
-<a class="btn" href="https://github.com/ASADIT96-stack">
-<i class="fab fa-github"></i> ASADIT96-stack
-</a>
-
-<a class="btn" href="https://facebook.com/AsadIT96.official">
-<i class="fab fa-facebook"></i> Facebook
-</a>
-
+<div class="card">
+Email: likhonzaman96@gmail.com<br>
+GitHub: ASADIT96-stack
 </div>
 </section>
 
 <footer>
-Build by <span>Asaduzzaman Likhon</span> | GitHub: ASADIT96-stack
+Built by <span style="color:#00ffcc;">Asaduzzaman Likhon</span>
 </footer>
 
 <script>
 
-// TYPEWRITER
-const text=[
-"Web Developer ⚡",
-"Cyber Security Learner 🔐",
-"GitHub Projects Builder 🚀"
-];
-
+/* TYPEWRITER */
+const text=["ACCESS GRANTED ⚡","CYBER MODE ACTIVE 🔐","HACKER SYSTEM READY 💻"];
 let i=0,j=0,del=false;
 
 function type(){
 let w=text[i];
-document.getElementById("typewriter").innerHTML=w.substring(0,j);
+document.getElementById("type").innerHTML=w.substring(0,j);
 
 if(!del){
 j++;
@@ -317,61 +224,49 @@ i=(i+1)%text.length;
 }
 }
 
-setTimeout(type,del?50:100);
+setTimeout(type,80);
 }
 type();
 
-// PARTICLES
-const c=document.getElementById("particles");
+/* MATRIX EFFECT */
+const c=document.getElementById("matrix");
 const ctx=c.getContext("2d");
 
-function resize(){
 c.width=window.innerWidth;
 c.height=window.innerHeight;
-}
-resize();
-window.addEventListener("resize",resize);
 
-let p=[];
-for(let i=0;i<80;i++){
-p.push({
-x:Math.random()*c.width,
-y:Math.random()*c.height,
-s:0.5+Math.random()
-});
-}
+let letters="01";
+letters=letters.split("");
+
+let font=14;
+let cols=c.width/font;
+
+let drops=[];
+for(let x=0;x<cols;x++)
+drops[x]=1;
 
 function draw(){
-ctx.clearRect(0,0,c.width,c.height);
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,c.width,c.height);
 
-p.forEach(e=>{
-ctx.fillStyle="#00c3ff";
-ctx.fillRect(e.x,e.y,2,2);
+ctx.fillStyle="#00ffcc";
+ctx.font=font+"px monospace";
 
-e.y+=e.s;
-if(e.y>c.height){
-e.y=0;
-e.x=Math.random()*c.width;
+for(let i=0;i<drops.length;i++){
+let text=letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text,i*font,drops[i]*font);
+
+if(drops[i]*font>c.height && Math.random()>0.975)
+drops[i]=0;
+
+drops[i]++;
 }
-});
 
 requestAnimationFrame(draw);
 }
 draw();
 
-// SCROLL EFFECT
-const cards=document.querySelectorAll(".card");
-
-function show(){
-cards.forEach(c=>{
-if(c.getBoundingClientRect().top < window.innerHeight-80){
-c.classList.add("show");
-}
-});
-}
-window.addEventListener("scroll",show);
-show();
-
+/* TYPE LOOP */
 </script>
 
 </body>
