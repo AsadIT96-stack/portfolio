@@ -3,144 +3,158 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-   <title>ASADIT96 | Cyber Security learner Portfolio</title>
-    <link rel="icon" type="image/png" href="likhon-favicon.png">
+   <title>ASADIT96 | Cyber Security Learner Portfolio</title>
+   
+   <link rel="icon" type="image/png" href="likhon-favicon.png">
    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cloudflare.com">
+   <link href="https://googleapis.com" rel="stylesheet">
+   
+   <style>
+      html {
+         scroll-behavior: smooth;
+      }
+      
+      :root {
+         --brand-color: #00b4ff; 
+      }
+      
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
 
-   <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      body {
+         font-family: 'Fira Code', monospace;
+         background: #000;
+         color: var(--brand-color);
+         overflow-x: hidden;
+      }
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Fira+Code&display=swap" rel="stylesheet">
-</head> <style>
-html{
-   scroll-behavior: smooth;
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
+      canvas {
+         position: fixed;
+         top: 0;
+         left: 0;
+         z-index: -1;
+      }
 
-body{
-font-family:'Fira Code', monospace;
-background:#000;
-color:#00ffcc;
-overflow-x:hidden;
-}
+      nav {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 15px 8%;
+         background: #000;
+         border-bottom: 1px solid var(--brand-color);
+         position: fixed;
+         width: 100%;
+         z-index: 1000;
+      }
 
-/* MATRIX BG */
-canvas{
-position:fixed;
-top:0;left:0;
-z-index:-1;
-}
+      .logo {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         font-family: 'Orbitron';
+      }
 
-/* NAV */
-nav{
-display:flex;
-justify-content:space-between;
-padding:15px 8%;
-background:#000;
-border-bottom:1px solid #00ffcc;
-position:fixed;
-width:100%;
-z-index:1000;
-}
+      .logo img {
+         width: 45px;
+         animation: glow 2s infinite alternate;
+      }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-family:'Orbitron';
-}
+      @keyframes glow {
+         from { filter: drop-shadow(0 0 5px var(--brand-color)); }
+         to { filter: drop-shadow(0 0 25px var(--brand-color)); }
+      }
 
-.logo img{
-width:45px;
-animation:glow 2s infinite alternate;
-}
+      .nav-links a {
+         color: var(--brand-color); 
+         text-decoration: none; 
+         margin-left: 15px;
+         transition: 0.3s;
+      }
+      
+      .nav-links a:hover {
+         text-shadow: 0 0 10px var(--brand-color);
+      }
 
-@keyframes glow{
-from{filter:drop-shadow(0 0 5px #00ffcc);}
-to{filter:drop-shadow(0 0 25px #00ffcc);}
-}
+      .hero {
+         height: 100vh;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+      }
 
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
+      .hero img {
+         width: 120px;
+         margin-bottom: 20px;
+         animation: float 4s infinite ease-in-out;
+      }
 
-.hero img{
-width:120px;
-margin-bottom:20px;
-animation:float 4s infinite ease-in-out;
-}
+      @keyframes float {
+         50% { transform: translateY(-15px); }
+      }
 
-@keyframes float{
-50%{transform:translateY(-15px);}
-}
+      h1 {
+         font-size: 2.8rem;
+         text-shadow: 0 0 20px var(--brand-color);
+      }
 
-h1{
-font-size:2.8rem;
-text-shadow:0 0 20px #00ffcc;
-}
+      #type {
+         margin-top: 10px;
+         color: var(--brand-color);
+         min-height: 1.5em;
+      }
 
-#type{
-margin-top:10px;
-color:#00ffcc;
-}
+      .btn {
+         margin-top: 20px;
+         padding: 10px 25px;
+         border: 1px solid var(--brand-color);
+         color: var(--brand-color);
+         text-decoration: none;
+         transition: 0.3s;
+      }
 
-/* BUTTON */
-.btn{
-margin-top:20px;
-padding:10px 25px;
-border:1px solid #00ffcc;
-color:#00ffcc;
-text-decoration:none;
-transition:0.3s;
-}
+      .btn:hover {
+         background: var(--brand-color);
+         color: #000;
+         box-shadow: 0 0 20px var(--brand-color);
+      }
 
-.btn:hover{
-background:#00ffcc;
-color:#000;
-box-shadow:0 0 20px #00ffcc;
-}
+      section {
+         padding: 80px 10%;
+      }
 
-/* SECTION */
-section{
-padding:80px 10%;
-}
+      h2 {
+         margin-bottom: 20px;
+         border-left: 3px solid var(--brand-color);
+         padding-left: 10px;
+         color: var(--brand-color);
+      }
 
-h2{
-margin-bottom:20px;
-border-left:3px solid #00ffcc;
-padding-left:10px;
-}
+      .card {
+         background: rgba(0, 180, 255, 0.05);
+         padding: 20px;
+         border: 1px solid var(--brand-color);
+         margin-top: 15px;
+      }
 
-/* CARD */
-.card{
-background:rgba(0,255,204,0.05);
-padding:20px;
-border:1px solid #00ffcc;
-margin-top:15px;
-}
+      .grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+         gap: 20px;
+      }
 
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:20px;
-border-top:1px solid #00ffcc;
-color:#777;
-}
-
-</style>
+      footer {
+         text-align: center;
+         padding: 20px;
+         border-top: 1px solid var(--brand-color);
+         color: #777;
+      }
+   </style>
 </head>
 
 <body>
@@ -149,152 +163,160 @@ color:#777;
 
 <!-- NAV -->
 <nav>
-    <div class="logo">
-    <img src="likhon-logo.png"alt="logo">
-    ASADIT96
- </div>
- <div class="nav-links">
-    <a href="#about">ABOUT</a>
-    <a href="#skills">SKILLS</a>
-    <a href="#projects">PROJECT</a>
-   
-<div>STATUS: ONLINE</div>
+   <div class="logo">
+      <img src="likhon-logo.png" alt="logo">
+      ASADIT96
+   </div>
+   <div class="nav-links">
+      <a href="#about">ABOUT</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#projects">PROJECT</a>
+   </div>
+   <div style="color: var(--brand-color);">STATUS: ONLINE</div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-<img src="likhon-
-   logo.svg"alt=likhon-logo">
-<h1>ASADUZZAMAN LIKHON</h1>
-<p id="type"></p>
-
-<a href="#contact" class="btn">HIRE ME</a>
+   <img src="likhon-logo.svg" alt="likhon-logo">
+   <h1>ASADUZZAMAN LIKHON</h1>
+   <p id="type"></p>
+   <a href="#contact" class="btn">HIRE ME</a>
 </div>
 
 <!-- ABOUT -->
-<section>
-<h2>ABOUT</h2>
-<div class="card">
-Cyber Security Learner 🔐 | Web Developer 💻  
-I build secure, modern, and hacker-style web systems.
-</div>
+<section id="about">
+   <h2>ABOUT</h2>
+   <div class="card">
+      Cyber Security Learner 🔐 | Web Developer 💻<br>  
+      I build secure, modern, and hacker-style web systems.
+   </div>
 </section>
 
 <!-- SKILLS -->
-<section>
-<h2>SKILLS</h2>
-<div class="grid">
-<div class="card">HTML</div>
-<div class="card">CSS</div>
-<div class="card">JavaScript</div>
-<div class="card">Cyber Security</div>
-<div class="card">Ethical Hacking</div>
-</div>
+<section id="skills">
+   <h2>SKILLS</h2>
+   <div class="grid">
+      <div class="card">HTML</div>
+      <div class="card">CSS</div>
+      <div class="card">JavaScript</div>
+      <div class="card">Cyber Security</div>
+      <div class="card">Ethical Hacking</div>
+   </div>
 </section>
 
 <!-- PROJECTS -->
-<section>
-<h2>PROJECTS</h2>
-<div class="grid">
-<div class="card">Cyber Login Panel</div>
-<div class="card">Security Tool (JS)</div>
-<div class="card">Portfolio System</div>
-</div>
+<section id="projects">
+   <h2>PROJECTS</h2>
+   <div class="grid">
+      <div class="card">Cyber Login Panel</div>
+      <div class="card">Security Tool (JS)</div>
+      <div class="card">Portfolio System</div>
+   </div>
 </section>
 
 <!-- CONTACT --> 
 <section id="contact" style="padding: 40px 20px; color: #fff; font-family: 'Courier New', Courier, monospace;">
-    <h2 style="color: #00ffcc; border-bbottom: 2px solid #00ffcc; display: inline-block; padding-bottom: 5px;">CONTACT</h2>
-    
-    <div class="card" style="background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 10px; border: 1px solid #00ffcc; margin-top: 20px;">
-        
+   <h2 style="color: var(--brand-color); border-bottom: 2px solid var(--brand-color); display: inline-block; padding-bottom: 5px;">CONTACT</h2>
+   
+   <div class="card" style="margin-top: 20px;">
        <p style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-envelope" style="color: #ea4335; font-size: 1.2rem;"></i>
-            <strong>Email:</strong> 
-            <a href="mailto:likhonzaman96@gmail.com" style="color: #00ffcc; text-decoration: none;">likhonzaman96@gmail.com</a>
+           <i class="fas fa-envelope" style="color: #ea4335; font-size: 1.2rem;"></i>
+           <strong>Email:</strong> 
+           <a href="mailto:likhonzaman96@gmail.com" style="color: var(--brand-color); text-decoration: none;">likhonzaman96@gmail.com</a>
        </p>
 
        <p style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
-            <i class="fab fa-facebook" style="color: #1877F2; font-size: 1.2rem;"></i>
-            <strong>Facebook:</strong> 
-            <a href="https://www.facebook.com/share/18W1P6eCBb/?mibextid=wwXlfr" target="_blank" style="color: #00ffcc; text-decoration: none;">Asaduzzaman Likhon</a>
+           <i class="fab fa-facebook" style="color: #1877F2; font-size: 1.2rem;"></i>
+           <strong>Facebook:</strong> 
+           <a href="https://facebook.com" target="_blank" style="color: var(--brand-color); text-decoration: none;">Asaduzzaman Likhon</a>
        </p>
 
        <p style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
-            <i class="fab fa-github" style="color: #fff; font-size: 1.2rem;"></i>
-            <strong>GitHub:</strong> 
-            <a href="https://github.com/AsadIT96-stack" target="_blank" style="color: #00ffcc; text-decoration: none;">github.com/AsadIT96-stack</a>
+           <i class="fab fa-github" style="color: #fff; font-size: 1.2rem;"></i>
+           <strong>GitHub:</strong> 
+           <a href="https://github.com" target="_blank" style="color: var(--brand-color); text-decoration: none;">://github.com</a>
        </p>
 
-        <p style="margin-top: 20px; color: #00ffcc; font-weight: bold;">
-            <i class="fas fa-briefcase"></i> Available for Freelance Work ✔
-        </p>
-    </div>
+       <p style="margin-top: 20px; color: var(--brand-color); font-weight: bold;">
+           <i class="fas fa-briefcase"></i> Available for Freelance Work ✔
+       </p>
+   </div>
 </section>
+
 <footer>
-    <p style="text-align: center; margin-top: 30px; font-size: 0.9rem; color: #888;">
-        &copy; built by Asaduzzaman Likhon <br>
-        2026 ASADIT96 | Cyber Portfolio
-    </p>
+   <p style="text-align: center; margin-top: 30px; font-size: 0.9rem; color: #888;">
+       &copy; built by Asaduzzaman Likhon <br>
+       2026 ASADIT96 | Cyber Portfolio
+   </p>
 </footer>
+
 <script>
-
 /* TYPEWRITER */
-const text=["ACCESS GRANTED ⚡","SYSTEM READY 🔐","HIRE ME FOR PROJECT 💻"];
-let i=0,j=0,del=false;
+const text = ["ACCESS GRANTED ⚡", "SYSTEM READY 🔐", "HIRE ME FOR PROJECT 💻"];
+let i = 0, j = 0, del = false;
 
-function type(){
-let w=text[i];
-document.getElementById("type").innerHTML=w.substring(0,j);
+function type() {
+    let w = text[i];
+    const typeEl = document.getElementById("type");
+    if (typeEl) {
+        typeEl.innerHTML = w.substring(0, j);
 
-if(!del){
-j++;
-if(j===w.length) del=true;
-}else{
-j--;
-if(j===0){
-del=false;
-i=(i+1)%text.length;
-}
-}
-setTimeout(type,80);
+        if (!del) {
+            j++;
+            if (j === w.length + 1) {
+                del = true;
+                setTimeout(type, 1500); 
+                return;
+            }
+        } else {
+            j--;
+            if (j === 0) {
+                del = false;
+                i = (i + 1) % text.length;
+            }
+        }
+        setTimeout(type, del ? 40 : 80);
+    }
 }
 type();
 
-/* MATRIX */
-const c=document.getElementById("matrix");
-const ctx=c.getContext("2d");
+/* MATRIX BACKGROUND */
+const c = document.getElementById("matrix");
+const ctx = c.getContext("2d");
 
-c.width=window.innerWidth;
-c.height=window.innerHeight;
-
-let letters="01".split("");
-let font=14;
-let cols=c.width/font;
-let drops=[];
-
-for(let x=0;x<cols;x++) drops[x]=1;
-
-function draw(){
-ctx.fillStyle="rgba(0,0,0,0.05)";
-ctx.fillRect(0,0,c.width,c.height);
-
-ctx.fillStyle="#00ffcc";
-ctx.font=font+"px monospace";
-
-for(let i=0;i<drops.length;i++){
-let text=letters[Math.floor(Math.random()*letters.length)];
-ctx.fillText(text,i*font,drops[i]*font);
-
-if(drops[i]*font>c.height && Math.random()>0.975)
-drops[i]=0;
-
-drops[i]++;
+function resizeCanvas() {
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
 }
-requestAnimationFrame(draw);
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+let letters = "01".split("");
+let font = 14;
+let cols = c.width / font;
+let drops = [];
+
+for (let x = 0; x < cols; x++) drops[x] = 1;
+
+function draw() {
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0, 0, c.width, c.height);
+
+    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--brand-color').trim();
+    ctx.font = font + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        let text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * font, drops[i] * font);
+
+        if (drops[i] * font > c.height && Math.random() > 0.975)
+            drops[i] = 0;
+
+        drops[i]++;
+    }
+    requestAnimationFrame(draw);
 }
 draw();
-
 </script>
 
 </body>
