@@ -7,7 +7,7 @@
    
    <link rel="icon" type="image/png" href="likhon-favicon.png">
    <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="https://cloudflare.com">
+   <link rel="stylesheet" href="https://cloudflare.com">vhttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
    <link href="https://googleapis.com" rel="stylesheet">
    
    <style>
@@ -15,14 +15,51 @@
          scroll-behavior: smooth;
       }
       
-      :root {
-         --brand-color: #00b4ff; 
-      }
-      
-      * {
+     :root {
+--brand-color: #00d9ff; /* Primary Logo Blue */
+--silver-metallic: #c0c0c0; /* Logo Silver Metallic */
+--dark-void: #000b14; /* Deep Background Theme */
+}
+
+
+/* --- Cyber Login Panel Design --- */
+.cyber-card {
+background: rgba(0, 15, 25, 0.9);
+border: 2px solid var(--silver-metallic);
+padding: 25px;
+border-radius: 8px;
+box-shadow: 0 0 15px var(--brand-color), inset 0 0 10px var(--brand-color);
+margin-top: 20px;
+}
+
+.glow-button {
+width: 100%;
+padding: 12px;
+background: transparent;
+border: 2px solid var(--brand-color);
+color: var(--brand-color);
+font-weight: bold;
+cursor: pointer;
+transition: 0.4s;
+font-family: 'Orbitron', sans-serif;
+text-transform: uppercase;
+}
+
+.glow-button:hover {
+background: var(--brand-color);
+color: #000;
+box-shadow: 0 0 25px var(--brand-color);
+}
+
+.status-msg {
+margin-top: 15px;
+font-family: 'Courier New', monospace;
+font-size: 14px;
+}
          margin: 0;
          padding: 0;
-         box-sizing: border-box;
+   
+        box-sizing: border-box;
       }
 
       body {
@@ -205,10 +242,35 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
-   <h2>PROJECTS</h2>
-   <div class="grid">
-      <div class="card">Cyber Login Panel</div>
+   
+      <section id="projects" class="project-display">
+<h2 class="section-title silver-text">Featured Projects</h2>
+
+<div class="cyber-card-container">
+<div class="cyber-card">
+<div class="card-header">
+<i class="fas fa-shield-alt icon-blue"></i>
+<h3>Cyber Login Panel</h3>
+</div>
+<div class="card-body">
+<p>A secure high-tech login interface designed with Electric Blue neon aesthetics and silver metallic borders.</p>
+
+<form id="systemLoginForm" class="cyber-form">
+<div class="input-field">
+<i class="fas fa-user"></i>
+<input type="text" placeholder="ACCESS ID" required>
+</div>
+<div class="input-field">
+<i class="fas fa-key"></i>
+<input type="password" id="sysPassword" placeholder="SECURITY KEY" required>
+</div>
+<button type="submit" class="glow-button">INITIALIZE ACCESS</button>
+</form>
+<div id="accessStatus" class="status-msg"></div>
+</div>
+</div>
+</div>
+</section>
       <div class="card">Security Tool (JS)</div>
       <div class="card">Portfolio System</div>
    </div>
