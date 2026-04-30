@@ -11,18 +11,16 @@
 <style>
 :root {
 --brand-color: #00d9ff;
---silver-metallic: #c0c0c0;
 --dark-void: #000b14;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
 font-family: 'Fira Code', monospace;
 background: #000;
-color: #ffffff;
-margin: 0;
+color: #fff;
 overflow-x: hidden;
 }
 
@@ -33,13 +31,13 @@ left: 0;
 z-index: -1;
 }
 
-/* Navigation */
+/* NAV */
 nav {
 display: flex;
 justify-content: space-between;
 align-items: center;
 padding: 15px 8%;
-background: rgba(0, 0, 0, 0.9);
+background: rgba(0,0,0,0.9);
 border-bottom: 1px solid var(--brand-color);
 position: fixed;
 width: 100%;
@@ -47,25 +45,23 @@ z-index: 1000;
 }
 
 .logo {
-display: flex;
-align-items: center;
-gap: 10px;
 font-family: 'Orbitron', sans-serif;
-font-weight: bold;
 color: var(--brand-color);
+font-weight: bold;
 }
 
 .nav-links a {
 color: var(--brand-color);
 text-decoration: none;
 margin-left: 20px;
-transition: 0.3s;
 font-size: 0.9rem;
 }
 
-.nav-links a:hover { text-shadow: 0 0 10px var(--brand-color); }
+.nav-links a:hover {
+text-shadow: 0 0 10px var(--brand-color);
+}
 
-/* Hero Section */
+/* HERO */
 .hero {
 height: 100vh;
 display: flex;
@@ -76,52 +72,47 @@ text-align: center;
 }
 
 h1 {
-font-family: 'Orbitron', sans-serif;
-font-size: clamp(1.5rem, 5vw, 3rem);
+font-family: 'Orbitron';
+font-size: clamp(1.5rem,5vw,3rem);
 text-shadow: 0 0 20px var(--brand-color);
-margin-bottom: 10px;
 }
 
 #type {
 color: var(--brand-color);
-min-height: 1.5em;
-font-size: 1.2rem;
+margin-top: 10px;
 }
 
-/* Sections & Cards */
+/* SECTION */
 section { padding: 80px 10%; }
 
 h2 {
-margin-bottom: 30px;
-border-left: 4px solid var(--brand-color);
-padding-left: 15px;
 color: var(--brand-color);
-font-family: 'Orbitron', sans-serif;
+border-left: 4px solid var(--brand-color);
+padding-left: 10px;
+margin-bottom: 20px;
 }
 
 .card {
-background: rgba(0, 217, 255, 0.05);
-padding: 25px;
-border: 1px solid rgba(0, 217, 255, 0.3);
+background: rgba(0,217,255,0.05);
+padding: 20px;
+border: 1px solid rgba(0,217,255,0.3);
 border-radius: 5px;
-backdrop-filter: blur(5px);
 }
 
 .grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 20px;
+grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+gap: 15px;
 }
 
-/* Cyber Login Panel */
+/* LOGIN */
 .cyber-card {
-background: rgba(0, 11, 20, 0.9);
+background: rgba(0,11,20,0.9);
 border: 1px solid var(--brand-color);
-padding: 30px;
+padding: 25px;
 border-radius: 8px;
-box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
 max-width: 400px;
-margin: 20px auto;
+margin: auto;
 }
 
 .input-field {
@@ -143,35 +134,30 @@ padding: 12px 12px 12px 35px;
 background: #001521;
 border: 1px solid var(--brand-color);
 color: #fff;
-outline: none;
 }
 
 .glow-button {
 width: 100%;
 padding: 12px;
-background: transparent;
 border: 2px solid var(--brand-color);
+background: transparent;
 color: var(--brand-color);
-font-weight: bold;
 cursor: pointer;
-transition: 0.4s;
-font-family: 'Orbitron', sans-serif;
 }
 
 .glow-button:hover {
 background: var(--brand-color);
 color: #000;
-box-shadow: 0 0 20px var(--brand-color);
 }
 
 .status-msg {
-margin-top: 15px;
+margin-top: 10px;
 text-align: center;
-font-size: 0.8rem;
-color: #00ffaa;
+font-size: 0.85rem;
 }
 </style>
 </head>
+
 <body>
 
 <canvas id="matrix"></canvas>
@@ -189,40 +175,32 @@ color: #00ffaa;
 <div class="hero">
 <h1>ASADUZZAMAN LIKHON</h1>
 <p id="type"></p>
-<a href="#contact" style="text-decoration:none; margin-top:20px;">
-<button class="glow-button" style="width: 200px;">HIRE ME</button>
-</a>
+<br>
+<a href="#contact"><button class="glow-button" style="width:200px;">HIRE ME</button></a>
 </div>
 
 <section id="about">
-<h2>ABOUT ME</h2>
+<h2>ABOUT</h2>
 <div class="card">
-<p>Cyber Security Learner 🔐 | Web Developer 💻</p>
-<p>I specialize in building secure, modern, and hacker-style web systems with a focus on penetration testing and secure coding.</p>
+Cyber Security Learner 🔐 | Web Developer 💻
 </div>
 </section>
 
 <section id="skills">
-<h2>TECHNICAL SKILLS</h2>
+<h2>SKILLS</h2>
 <div class="grid">
-<div class="card">HTML5 / CSS3</div>
-<div class="card">JavaScript (ES6+)</div>
-<div class="card">Ethical Hacking</div>
-<div class="card">Linux Systems</div>
-<div class="card">Network Security</div>
-<div class="card">Penetration Testing</div>
+<div class="card">HTML / CSS</div>
+<div class="card">JavaScript</div>
+<div class="card">Linux</div>
+<div class="card">Networking</div>
 </div>
 </section>
 
 <section id="projects">
-<h2>FEATURED PROJECTS</h2>
-<div class="cyber-card">
-<div style="text-align:center; margin-bottom: 20px;">
-<i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--brand-color);"></i>
-<h3>System Login Panel</h3>
-</div>
+<h2>PROJECT</h2>
 
-<form id="systemLoginForm">
+<div class="cyber-card">
+<form id="loginForm">
 <div class="input-field">
 <i class="fas fa-user"></i>
 <input type="text" placeholder="ACCESS ID" required>
@@ -231,121 +209,102 @@ color: #00ffaa;
 <i class="fas fa-key"></i>
 <input type="password" placeholder="SECURITY KEY" required>
 </div>
-<button type="submit" class="glow-button">INITIALIZE ACCESS</button>
+
+<button class="glow-button">LOGIN</button>
 </form>
-<div id="accessStatus" class="status-msg"></div>
+
+<div id="status" class="status-msg"></div>
 </div>
+
 </section>
 
 <section id="contact">
-<h2>GET IN TOUCH</h2>
+<h2>CONTACT</h2>
 <div class="card">
-<p>📧 <strong>Email:</strong> <a href="mailto:likhonzaman96@gmail.com" style="color: var(--brand-color);">likhonzaman96@gmail.com</a></p>
-<p>💻 <strong>GitHub:</strong> <a href="#" style="color: var(--brand-color);">github.com/asadit96</a></p>
+Email: likhonzaman96@gmail.com<br>
+GitHub: <a href="https://github.com/asadit96" target="_blank">asadit96</a>
 </div>
 </section>
 
-<footer style="padding: 40px; text-align: center; border-top: 1px solid #111;">
-<p>&copy; 2026 ASADIT96 | Developed by Asaduzzaman Likhon</p>
+<footer style="text-align:center;padding:20px;">
+© 2026 Built by Asaduzzaman Likhon
 </footer>
 
 <script>
-const textArray = ["ACCESS GRANTED ⚡", "SYSTEM READY 🔐", "HIRE ME FOR PROJECT 💻"];
-let textIdx = 0, charIdx = 0, isDeleting = false;
+/* TYPE */
+const texts=["ACCESS GRANTED","SYSTEM READY","HIRE ME"];
+let i=0,j=0,del=false;
 
-function typeEffect() {
-    const current = textArray[textIdx];
-    const typeEl = document.getElementById("type");
+function type(){
+let el=document.getElementById("type");
+let cur=texts[i];
 
-if (isDeleting) {
-charIdx--;
-} else {
-charIdx++;
+j=del?j-1:j+1;
+el.textContent=cur.substring(0,j);
+
+if(!del && j===cur.length){del=true;setTimeout(type,1000);}
+else if(del && j===0){del=false;i=(i+1)%texts.length;setTimeout(type,300);}
+else{setTimeout(type,del?50:100);}
 }
 
-typeEl.textContent = current.substring(0, charIdx);
+/* MATRIX */
+const c=document.getElementById("matrix");
+const ctx=c.getContext("2d");
 
-if (!isDeleting && charIdx === current.length) {
-isDeleting = true;
-setTimeout(typeEffect, 1500);
-} else if (isDeleting && charIdx === 0) {
-isDeleting = false;
-textIdx = (textIdx + 1) % textArray.length;
-setTimeout(typeEffect, 500);
-} else {
-setTimeout(typeEffect, isDeleting ? 50 : 100);
-}
-}
+let drops,cols;
 
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-function resize() {
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resize(){
+c.width=innerWidth;
+c.height=innerHeight;
+cols=Math.floor(c.width/20);
+drops=new Array(cols).fill(1);
 }
 resize();
-window.addEventListener('resize', resize);
+addEventListener("resize",resize);
 
-const columns = Math.floor(canvas.width / 20);
-const drops = new Array(columns).fill(1);
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,c.width,c.height);
 
-function drawMatrix() {
-ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle="#00d9ff";
 
-ctx.fillStyle = "#00d9ff";
-ctx.font = "15px monospace";
+for(let x=0;x<drops.length;x++){
+let t=Math.random()>0.5?"0":"1";
+ctx.fillText(t,x*20,drops[x]*20);
 
-for (let i = 0; i < drops.length; i++) {
-const text = Math.random() > 0.5 ? "0" : "1";
-ctx.fillText(text, i * 20, drops[i] * 20);
-
-if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
-drops[i] = 0;
-}
-drops[i]++;
+if(drops[x]*20>c.height && Math.random()>0.975) drops[x]=0;
+drops[x]++;
 }
 }
 
-document.getElementById('systemLoginForm').addEventListener('submit', function(e) {
+/* LOGIN FIXED */
+document.getElementById("loginForm").addEventListener("submit",function(e){
 e.preventDefault();
 
-const accessId = this.querySelectorAll('input')[0].value;
-const securityKey = this.querySelectorAll('input')[1].value;
-const status = document.getElementById('accessStatus');
+let id=this[0].value.trim().toLowerCase();
+let key=this[1].value.trim();
+let s=document.getElementById("status");
 
-status.innerHTML = "AUTHENTICATING...";
-status.style.color = "#00d9ff";
+s.innerText="AUTHENTICATING...";
+s.style.color="#00d9ff";
 
-setTimeout(() => {
-if(accessId.toLowerCase(AsadIT96) === "" && securityKey === "likhon96") {
-status.innerHTML = "ACCESS GRANTED. WELCOME, LIKHON.";
-status.style.color = "#00ffaa";
-
-setTimeout(() => {
-document.querySelector('.cyber-card').innerHTML = `
-<div style="text-align:center; animation: fadeIn 1s; padding: 20px;">
-<i class="fas fa-user-shield" style="font-size: 3rem; color: #00ffaa; margin-bottom: 15px;"></i>
-<h3 style="color: #00ffaa;">SYSTEM BYPASS SUCCESSFUL</h3>
-<p style="color: #fff; font-size: 0.9rem;">Status: Online | Role: Security Expert</p>
-<p style="color: yellow; font-size: 0.8rem;">New Mission: Secure the Web!</p>
-</div>
-`;
-}, 1000);
-  } else {
-        status.innerHTML =   
-             "ACCESS DENIED! INVALID SECURITY KEY.";
-            
-  status.style.color = 
-  "#ff4444";
+setTimeout(()=>{
+if(id==="asadit96" && key==="likhon96"){
+s.innerText="ACCESS GRANTED";
+s.style.color="#00ffaa";
+}else{
+s.innerText="ACCESS DENIED";
+s.style.color="red";
 }
-     }, 1500);
+},1000);
+
 });
 
-setInterval(drawMatrix, 50);
-typeEffect();
+setInterval(draw,50);
+type();
 </script>
 
 </body>
 </html>
+
+okk
