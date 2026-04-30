@@ -250,8 +250,8 @@ color: #00ffaa;
 </footer>
 
 <script>
-/* TYPEWRITER */
-const textArray = ["ACCESS GRANTED ⚡", "SYSTEM READY 🔐", "WEB SECURITY EXPERT 💻"];
+/* ১. টাইপরাইটার অ্যানিমেশন (Typewriter Effect) */
+const textArray = ["ACCESS GRANTED ⚡", "SYSTEM READY 🔐", "HIRE ME FOR PROJECT 💻"];
 let textIdx = 0, charIdx = 0, isDeleting = false;
 
 function typeEffect() {
@@ -268,7 +268,7 @@ typeEl.textContent = current.substring(0, charIdx);
 
 if (!isDeleting && charIdx === current.length) {
 isDeleting = true;
-setTimeout(typeEffect, 1500);
+setTimeout(typeEffect, 1500); // লেখা শেষ হলে ১.৫ সেকেন্ড বিরতি
 } else if (isDeleting && charIdx === 0) {
 isDeleting = false;
 textIdx = (textIdx + 1) % textArray.length;
@@ -278,7 +278,6 @@ setTimeout(typeEffect, isDeleting ? 50 : 100);
 }
 }
 
-/* MATRIX */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
@@ -309,21 +308,44 @@ drops[i] = 0;
 drops[i]++;
 }
 }
-setInterval(drawMatrix, 50);
-typeEffect();
 
-/* LOGIN FORM SIMULATION */
 document.getElementById('systemLoginForm').addEventListener('submit', function(e) {
 e.preventDefault();
+
+const accessId = this.querySelectorAll('input')[0].value;
+const securityKey = this.querySelectorAll('input')[1].value;
 const status = document.getElementById('accessStatus');
+
 status.innerHTML = "AUTHENTICATING...";
 status.style.color = "#00d9ff";
 
 setTimeout(() => {
-status.innerHTML = "ACCESS GRANTED. WELCOME, AGENT.";
+if(accessId.toLowerCase() === "admin" && securityKey === "likhon96") {
+status.innerHTML = "ACCESS GRANTED. WELCOME, LIKHON.";
 status.style.color = "#00ffaa";
-}, 2000);
+
+setTimeout(() => {
+document.querySelector('.cyber-card').innerHTML = `
+<div style="text-align:center; animation: fadeIn 1s; padding: 20px;">
+<i class="fas fa-user-shield" style="font-size: 3rem; color: #00ffaa; margin-bottom: 15px;"></i>
+<h3 style="color: #00ffaa;">SYSTEM BYPASS SUCCESSFUL</h3>
+<p style="color: #fff; font-size: 0.9rem;">Status: Online | Role: Security Expert</p>
+<p style="color: yellow; font-size: 0.8rem;">New Mission: Secure the Web!</p>
+</div>
+`;
+}, 1000);
+  } else {
+        status.innerHTML =   
+             "ACCESS DENIED! INVALID SECURITY KEY.";
+            
+  status.style.color = 
+  "#ff4444";
+}
+     }, 1500);
 });
+
+setInterval(drawMatrix, 50);
+typeEffect();
 </script>
 
 </body>
