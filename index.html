@@ -212,7 +212,14 @@ Cyber Security Learner 🔐 | Web Developer 💻
 
 <button class="glow-button">LOGIN</button>
 </form>
-
+<div class="cyber-card" style="margin-top: 20px;">
+<h3 style="color: #00FFFF; margin-bottom: 15px;">SECURITY KEY GENERATOR</h3>
+<div class="input-field">
+<i class="fas fa-shield-alt"></i>
+<input type="text" id="passDisplay" placeholder="CLICK GENERATE" readonly>
+</div>
+<button type="button" class="glow-button" onclick="displayKey()">GENERATE KEY</button>
+</div>
 <div id="status" class="status-msg"></div>
 </div>
 
@@ -299,7 +306,22 @@ s.style.color="red";
 },1000);
 
 });
+function generateSecurityKey(length = 16) {
+const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+let key = "";
+for (let i = 0; i < length; i++) {
+key += chars.charAt(Math.floor(Math.random() * chars.length));
+}
+return key;
+}
 
+function displayKey() {
+const key = generateSecurityKey(16);
+const display = document.getElementById("passDisplay");
+if(display) {
+display.value = key;
+}
+}
 setInterval(draw,50);
 type();
 </script>
@@ -307,4 +329,3 @@ type();
 </body>
 </html>
 
-okk
