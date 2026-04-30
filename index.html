@@ -1,35 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>ASADIT96 | Cyber Security Learner Portfolio</title>
-   
-   <link rel="icon" type="image/png" href="likhon-favicon.png">
-   <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="https://cloudflare.com">vhttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-   <link href="https://googleapis.com" rel="stylesheet">
-   
-   <style>
-      html {
-         scroll-behavior: smooth;
-      }
-      
-     :root {
---brand-color: #00d9ff; /* Primary Logo Blue */
---silver-metallic: #c0c0c0; /* Logo Silver Metallic */
---dark-void: #000b14; /* Deep Background Theme */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASADIT96 | Cyber Security Learner Portfolio</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--brand-color: #00d9ff;
+--silver-metallic: #c0c0c0;
+--dark-void: #000b14;
 }
 
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-/* --- Cyber Login Panel Design --- */
-.cyber-card {
-background: rgba(0, 15, 25, 0.9);
-border: 2px solid var(--silver-metallic);
+body {
+font-family: 'Fira Code', monospace;
+background: #000;
+color: #ffffff;
+margin: 0;
+overflow-x: hidden;
+}
+
+canvas {
+position: fixed;
+top: 0;
+left: 0;
+z-index: -1;
+}
+
+/* Navigation */
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 8%;
+background: rgba(0, 0, 0, 0.9);
+border-bottom: 1px solid var(--brand-color);
+position: fixed;
+width: 100%;
+z-index: 1000;
+}
+
+.logo {
+display: flex;
+align-items: center;
+gap: 10px;
+font-family: 'Orbitron', sans-serif;
+font-weight: bold;
+color: var(--brand-color);
+}
+
+.nav-links a {
+color: var(--brand-color);
+text-decoration: none;
+margin-left: 20px;
+transition: 0.3s;
+font-size: 0.9rem;
+}
+
+.nav-links a:hover { text-shadow: 0 0 10px var(--brand-color); }
+
+/* Hero Section */
+.hero {
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+
+h1 {
+font-family: 'Orbitron', sans-serif;
+font-size: clamp(1.5rem, 5vw, 3rem);
+text-shadow: 0 0 20px var(--brand-color);
+margin-bottom: 10px;
+}
+
+#type {
+color: var(--brand-color);
+min-height: 1.5em;
+font-size: 1.2rem;
+}
+
+/* Sections & Cards */
+section { padding: 80px 10%; }
+
+h2 {
+margin-bottom: 30px;
+border-left: 4px solid var(--brand-color);
+padding-left: 15px;
+color: var(--brand-color);
+font-family: 'Orbitron', sans-serif;
+}
+
+.card {
+background: rgba(0, 217, 255, 0.05);
 padding: 25px;
+border: 1px solid rgba(0, 217, 255, 0.3);
+border-radius: 5px;
+backdrop-filter: blur(5px);
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 20px;
+}
+
+/* Cyber Login Panel */
+.cyber-card {
+background: rgba(0, 11, 20, 0.9);
+border: 1px solid var(--brand-color);
+padding: 30px;
 border-radius: 8px;
-box-shadow: 0 0 15px var(--brand-color), inset 0 0 10px var(--brand-color);
-margin-top: 20px;
+box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+max-width: 400px;
+margin: 20px auto;
+}
+
+.input-field {
+position: relative;
+margin-bottom: 15px;
+}
+
+.input-field i {
+position: absolute;
+left: 10px;
+top: 50%;
+transform: translateY(-50%);
+color: var(--brand-color);
+}
+
+.input-field input {
+width: 100%;
+padding: 12px 12px 12px 35px;
+background: #001521;
+border: 1px solid var(--brand-color);
+color: #fff;
+outline: none;
 }
 
 .glow-button {
@@ -42,331 +156,174 @@ font-weight: bold;
 cursor: pointer;
 transition: 0.4s;
 font-family: 'Orbitron', sans-serif;
-text-transform: uppercase;
 }
 
 .glow-button:hover {
 background: var(--brand-color);
 color: #000;
-box-shadow: 0 0 25px var(--brand-color);
+box-shadow: 0 0 20px var(--brand-color);
 }
 
 .status-msg {
 margin-top: 15px;
-font-family: 'Courier New', monospace;
-font-size: 14px;
+text-align: center;
+font-size: 0.8rem;
+color: #00ffaa;
 }
-         margin: 0;
-         padding: 0;
-   
-        box-sizing: border-box;
-      }
-
-      body {
-         font-family: 'Fira Code', monospace;
-         background: #000;
-         color: #ffffff;
-         overflow-x: hidden;
-      }
-
-      canvas {
-         position: fixed;
-         top: 0;
-         left: 0;
-         z-index: -1;
-      }
-
-      nav {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         padding: 15px 8%;
-         background: #000;
-         border-bottom: 1px solid var(--brand-color);
-         position: fixed;
-         width: 100%;
-         z-index: 1000;
-      }
-
-      .logo {
-         display: flex;
-         align-items: center;
-         gap: 10px;
-         font-family: 'Orbitron';
-      }
-
-      .logo img {
-         width: 45px;
-         animation: glow 2s infinite alternate;
-      }
-
-      @keyframes glow {
-         from { filter: drop-shadow(0 0 5px var(--brand-color)); }
-         to { filter: drop-shadow(0 0 25px var(--brand-color)); }
-      }
-
-      .nav-links a {
-         color: var(--brand-color); 
-         text-decoration: none; 
-         margin-left: 15px;
-         transition: 0.3s;
-      }
-      
-      .nav-links a:hover {
-         text-shadow: 0 0 10px var(--brand-color);
-      }
-
-      .hero {
-         height: 100vh;
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
-         align-items: center;
-         text-align: center;
-      }
-
-      .hero img {
-         width: 120px;
-         margin-bottom: 20px;
-         animation: float 4s infinite ease-in-out;
-      }
-
-      @keyframes float {
-         50% { transform: translateY(-15px); }
-      }
-
-      h1 {
-         font-size: 2.8rem;
-         text-shadow: 0 0 20px var(--brand-color);
-      }
-
-      #type {
-         margin-top: 10px;
-         color: var(--brand-color);
-         min-height: 1.5em;
-      }
-
-      .btn {
-         margin-top: 20px;
-         padding: 10px 25px;
-         border: 1px solid var(--brand-color);
-         color: var(--brand-color);
-         text-decoration: none;
-         transition: 0.3s;
-      }
-
-      .btn:hover {
-         background: var(--brand-color);
-         color: #000;
-         box-shadow: 0 0 20px var(--brand-color);
-      }
-
-      section {
-         padding: 80px 10%;
-      }
-
-      h2 {
-         margin-bottom: 20px;
-         border-left: 3px solid var(--brand-color);
-         padding-left: 10px;
-         color: var(--brand-color);
-      }
-
-      .card {
-         background: rgba(0, 180, 255, 0.05);
-         padding: 20px;
-         border: 1px solid var(--brand-color);
-         margin-top: 15px;
-      }
-
-      .grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-         gap: 20px;
-      }
-
-      footer {
-         text-align: center;
-         padding: 20px;
-         border-top: 1px solid var(--brand-color);
-         color: #777;
-      }
-   </style>
+</style>
 </head>
-
 <body>
 
 <canvas id="matrix"></canvas>
 
-<!-- NAV -->
 <nav>
-   <div class="logo">
-      <img src="likhon-logo.png" alt="logo">
-      ASADIT96
-   </div>
-   <div class="nav-links">
-      <a href="#about">ABOUT</a>
-      <a href="#skills">SKILLS</a>
-      <a href="#projects">PROJECT</a>
-   <div style="color: var(--brand-color);">STATUS: ONLINE</div>
+<div class="logo">ASADIT96</div>
+<div class="nav-links">
+<a href="#about">ABOUT</a>
+<a href="#skills">SKILLS</a>
+<a href="#projects">PROJECTS</a>
+<a href="#contact">CONTACT</a>
+</div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-   <img src="likhon-logo.svg" alt="likhon-logo">
-   <h1>ASADUZZAMAN LIKHON</h1>
-   <p id="type"></p>
-   <a href="#contact" class="btn">HIRE ME</a>
+<h1>ASADUZZAMAN LIKHON</h1>
+<p id="type"></p>
+<a href="#contact" style="text-decoration:none; margin-top:20px;">
+<button class="glow-button" style="width: 200px;">HIRE ME</button>
+</a>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
-   <h2>ABOUT</h2>
-   <div class="card">
-      Cyber Security Learner 🔐 | Web Developer 💻<br>  
-      I build secure, modern, and hacker-style web systems.
-   </div>
+<h2>ABOUT ME</h2>
+<div class="card">
+<p>Cyber Security Learner 🔐 | Web Developer 💻</p>
+<p>I specialize in building secure, modern, and hacker-style web systems with a focus on penetration testing and secure coding.</p>
+</div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
-   <h2>SKILLS</h2>
-   <div class="grid">
-      <div class="card">HTML</div>
-      <div class="card">CSS</div>
-      <div class="card">JavaScript</div>
-      <div class="card">Cyber Security</div>
-      <div class="card">Ethical Hacking</div>
-      <div class="project-display"</div>
-<h2 class="section-title silver-text">Featured Projects</h2>
-
-<div class="cyber-card-container">
-<div class="cyber-card">
-<div class="card-header">
-<i class="fas fa-shield-alt icon-blue"></i>
-<h3>Cyber Login Panel</h3>
+<h2>TECHNICAL SKILLS</h2>
+<div class="grid">
+<div class="card">HTML5 / CSS3</div>
+<div class="card">JavaScript (ES6+)</div>
+<div class="card">Ethical Hacking</div>
+<div class="card">Linux Systems</div>
+<div class="card">Network Security</div>
+<div class="card">Penetration Testing</div>
 </div>
-<div class="card-body">
-<p>A secure high-tech login interface designed with Electric Blue neon aesthetics and silver metallic borders.</p>
+</section>
 
-<form id="systemLoginForm" class="cyber-form">
+<section id="projects">
+<h2>FEATURED PROJECTS</h2>
+<div class="cyber-card">
+<div style="text-align:center; margin-bottom: 20px;">
+<i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--brand-color);"></i>
+<h3>System Login Panel</h3>
+</div>
+
+<form id="systemLoginForm">
 <div class="input-field">
 <i class="fas fa-user"></i>
 <input type="text" placeholder="ACCESS ID" required>
 </div>
 <div class="input-field">
 <i class="fas fa-key"></i>
-<input type="password" id="sysPassword" placeholder="SECURITY KEY" required>
+<input type="password" placeholder="SECURITY KEY" required>
 </div>
 <button type="submit" class="glow-button">INITIALIZE ACCESS</button>
 </form>
 <div id="accessStatus" class="status-msg"></div>
-   
+</div>
 </section>
-      <div class="card">Security Tool (JS)</div>
-      <div class="card">Portfolio System</div>
 
-<!-- CONTACT --> 
+<section id="contact">
+<h2>GET IN TOUCH</h2>
+<div class="card">
+<p>📧 <strong>Email:</strong> <a href="mailto:likhonzaman96@gmail.com" style="color: var(--brand-color);">likhonzaman96@gmail.com</a></p>
+<p>💻 <strong>GitHub:</strong> <a href="#" style="color: var(--brand-color);">github.com/asadit96</a></p>
+</div>
+</section>
 
-<section id="contact" style="padding: 40px 20px; color: #fff; font-family: 'Courier New', Courier, monospace;">
-   <h2 style="color: var(--brand-color); border-bottom: 2px solid var(--brand-color); display: inline-block; padding-bottom: 5px;">CONTACT</h2>
-   
-   <div class="card" style="margin-top: 20px;">
-       
-       <p style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
-           <span style="font-size: 1.2rem;">📧</span>
-           <strong>Email:</strong> 
-           <a href="mailto:likhonzaman96@gmail.com" style="color: var(--brand-color); text-decoration: none;">likhonzaman96@gmail.com</a>
-       </p>
-
-       <p style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
-           <span style="font-size: 1.2rem;">👥</span>
-           <strong>Facebook:</strong> 
-           <a href="https://facebook.com" target="_blank" style="color: var(--brand-color); text-decoration: none;">Asaduzzaman Likhon</a>
-       </p>
-
-       <p style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
-           <span style="font-size: 1.2rem;">💻</span>
-           <strong>GitHub:</strong> 
-           <a href="https://github.com" target="_blank" style="color: var(--brand-color); text-decoration: none;">://github.com</a>
-       </p>
-
-       <p style="margin-top: 20px; color: var(--brand-color); font-weight: bold;">
-
-<footer>
-   <p style="text-align: center; margin-top: 30px; font-size: 0.9rem; color: #888;">
-       &copy; built by Asaduzzaman Likhon <br>
-       2026 ASADIT96 | Cyber Portfolio
-   </p>
+<footer style="padding: 40px; text-align: center; border-top: 1px solid #111;">
+<p>&copy; 2026 ASADIT96 | Developed by Asaduzzaman Likhon</p>
 </footer>
 
 <script>
 /* TYPEWRITER */
-const text = ["ACCESS GRANTED ⚡", "SYSTEM READY 🔐", "HIRE ME FOR PROJECT 💻"];
-let i = 0, j = 0, del = false;
+const textArray = ["ACCESS GRANTED ⚡", "SYSTEM READY 🔐", "WEB SECURITY EXPERT 💻"];
+let textIdx = 0, charIdx = 0, isDeleting = false;
 
-function type() {
-    let w = text[i];
-    const typeEl = document.getElementById("type");
-    if (typeEl) {
-        typeEl.innerHTML = w.substring(0, j);
+function typeEffect() {
+const current = textArray[textIdx];
+const typeEl = document.getElementById("type");
 
-        if (!del) {
-            j++;
-            if (j === w.length + 1) {
-                del = true;
-                setTimeout(type, 1500); 
-                return;
-            }
-        } else {
-            j--;
-            if (j === 0) {
-                del = false;
-                i = (i + 1) % text.length;
-            }
-        }
-        setTimeout(type, del ? 40 : 80);
-    }
+if (isDeleting) {
+charIdx--;
+} else {
+charIdx++;
 }
-type();
 
-/* MATRIX BACKGROUND */
-const c = document.getElementById("matrix");
-const ctx = c.getContext("2d");
+typeEl.textContent = current.substring(0, charIdx);
 
-function resizeCanvas() {
-    c.width = window.innerWidth;
-    c.height = window.innerHeight;
+if (!isDeleting && charIdx === current.length) {
+isDeleting = true;
+setTimeout(typeEffect, 1500);
+} else if (isDeleting && charIdx === 0) {
+isDeleting = false;
+textIdx = (textIdx + 1) % textArray.length;
+setTimeout(typeEffect, 500);
+} else {
+setTimeout(typeEffect, isDeleting ? 50 : 100);
 }
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-let letters = "01".split("");
-let font = 14;
-let cols = c.width / font;
-let drops = [];
-
-for (let x = 0; x < cols; x++) drops[x] = 1;
-
-function draw() {
-    ctx.fillStyle = "rgba(0,0,0,0.05)";
-    ctx.fillRect(0, 0, c.width, c.height);
-
-    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--brand-color').trim();
-    ctx.font = font + "px monospace";
-
-    for (let i = 0; i < drops.length; i++) {
-        let text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * font, drops[i] * font);
-
-        if (drops[i] * font > c.height && Math.random() > 0.975)
-            drops[i] = 0;
-
-        drops[i]++;
-    }
-    requestAnimationFrame(draw);
 }
-draw();
+
+/* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const columns = Math.floor(canvas.width / 20);
+const drops = new Array(columns).fill(1);
+
+function drawMatrix() {
+ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+ctx.fillStyle = "#00d9ff";
+ctx.font = "15px monospace";
+
+for (let i = 0; i < drops.length; i++) {
+const text = Math.random() > 0.5 ? "0" : "1";
+ctx.fillText(text, i * 20, drops[i] * 20);
+
+if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
+drops[i] = 0;
+}
+drops[i]++;
+}
+}
+setInterval(drawMatrix, 50);
+typeEffect();
+
+/* LOGIN FORM SIMULATION */
+document.getElementById('systemLoginForm').addEventListener('submit', function(e) {
+e.preventDefault();
+const status = document.getElementById('accessStatus');
+status.innerHTML = "AUTHENTICATING...";
+status.style.color = "#00d9ff";
+
+setTimeout(() => {
+status.innerHTML = "ACCESS GRANTED. WELCOME, AGENT.";
+status.style.color = "#00ffaa";
+}, 2000);
+});
 </script>
 
 </body>
