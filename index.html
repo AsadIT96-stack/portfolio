@@ -250,13 +250,12 @@ color: #00ffaa;
 </footer>
 
 <script>
-/* ১. টাইপরাইটার অ্যানিমেশন (Typewriter Effect) */
 const textArray = ["ACCESS GRANTED ⚡", "SYSTEM READY 🔐", "HIRE ME FOR PROJECT 💻"];
 let textIdx = 0, charIdx = 0, isDeleting = false;
 
 function typeEffect() {
-const current = textArray[textIdx];
-const typeEl = document.getElementById("type");
+    const current = textArray[textIdx];
+    const typeEl = document.getElementById("type");
 
 if (isDeleting) {
 charIdx--;
@@ -268,7 +267,7 @@ typeEl.textContent = current.substring(0, charIdx);
 
 if (!isDeleting && charIdx === current.length) {
 isDeleting = true;
-setTimeout(typeEffect, 1500); // লেখা শেষ হলে ১.৫ সেকেন্ড বিরতি
+setTimeout(typeEffect, 1500);
 } else if (isDeleting && charIdx === 0) {
 isDeleting = false;
 textIdx = (textIdx + 1) % textArray.length;
@@ -320,7 +319,7 @@ status.innerHTML = "AUTHENTICATING...";
 status.style.color = "#00d9ff";
 
 setTimeout(() => {
-if(accessId.toLowerCase() === "admin" && securityKey === "likhon96") {
+if(accessId.toLowerCase(AsadIT96) === "" && securityKey === "likhon96") {
 status.innerHTML = "ACCESS GRANTED. WELCOME, LIKHON.";
 status.style.color = "#00ffaa";
 
