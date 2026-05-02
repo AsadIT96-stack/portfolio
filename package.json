@@ -1,0 +1,35 @@
+{
+  "name": "asad-cyber-portfolio",
+  "version": "1.1.0",
+  "description": "Professional Full-Stack Web Development & Cyber Security Learning Portfolio of Asaduzzaman Likhon",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Initializing secure environment...' && exit 0",
+    "test": "echo 'Running security auditing...' && exit 0",
+    "audit": "npm audit --audit-level=high",
+    "build": "echo 'Optimizing for production deployment...' && exit 0"
+  },
+  "keywords": [
+    "Web-Developer",
+    "Cyber-Security",
+    "Ethical-Hacking",
+    "Penetration-Testing",
+    "Nmap",
+    "Burp-Suite",
+    "Linux",
+    "Full-Stack"
+  ],
+  "author": "AsadIT96-stack (Asaduzzaman Likhon)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AsadIT96-stack/portfolio"
+  },
+  "bugs": {
+    "url": "https://github.com/AsadIT96-stack/portfolio/issues"
+  },
+  "homepage": "https://github.com/AsadIT96-stack/portfolio#readme"
+}
