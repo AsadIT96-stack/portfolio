@@ -216,7 +216,7 @@ Cyber Security Learner 🔐 | Web Developer 💻
         </form>
     </div>
      
-<section id="projects">
+ <section id="projects" style="display: none;">
     <h2>PROJECTS</h2>
     <!-- Cyber Card / Password Gen -->
     <div class="cyber-card" style="margin-top: 20px;">
@@ -353,6 +353,25 @@ setInterval(draw,50);
 type();
 document.getElementById('generate-btn').addEventListener('click', displayKey);
 document.getElementById('copy-btn').addEventListener('click', copyKey);
+const loginForm = document.getElementById('loginForm');
+const projectSection = document.getElementById('projects');
+const securityKey = document.getElementById('securityKey');
+
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    if (securityKey.value === "1234") {
+        loginForm.parentElement.style.display = 'none';
+        projectSection.style.display = 'block';
+        alert("Access Granted, Likhon!");
+    } else {
+        alert("Invalid Security Code!");
+    }
+});
+
+function logout() {
+    location.reload();
+}
 
 </script>
 
