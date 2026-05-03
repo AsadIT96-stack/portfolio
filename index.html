@@ -32,7 +32,6 @@
             z-index: -1;
         }
 
-        /* NAV */
         nav {
             display: flex;
             justify-content: space-between;
@@ -58,7 +57,6 @@
             font-size: 0.9rem;
         }
 
-        /* HERO */
         .hero {
             height: 100vh;
             display: flex;
@@ -80,7 +78,6 @@
             height: 20px;
         }
 
-        /* SECTION */
         section { padding: 80px 10%; }
 
         h2 {
@@ -104,7 +101,6 @@
             gap: 15px;
         }
 
-        /* CYBER CARD */
         .cyber-card {
             background: rgba(0,11,20,0.9);
             border: 1px solid var(--brand-color);
@@ -213,21 +209,23 @@
     
     <!-- LOGIN CARD -->
     <div class="cyber-card" id="loginArea">
-        <h3 style="color: var(--brand-color); margin-bottom: 15px;">SYSTEM LOGIN</h3>
-        <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" id="accessId" placeholder="ACCESS ID">
-        </div>
-        <div class="input-field">
-            <i class="fas fa-key"></i>
-            <input type="password" id="securityKey" placeholder="SECURITY CODE">
-        </div>
-        <button id="loginBtn" class="glow-button">LOGIN</button>
-        <div id="status" class="status-msg"></div>
+        <form id="loginForm">
+            <h3 style="color: var(--brand-color); margin-bottom: 15px;">SYSTEM LOGIN</h3>
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" id="accessId" placeholder="ACCESS ID" required>
+            </div>
+            <div class="input-field">
+                <i class="fas fa-key"></i>
+                <input type="password" id="securityKey" placeholder="SECURITY CODE" required>
+            </div>
+            <button type="submit" id="loginBtn" class="glow-button">LOGIN</button>
+            <div id="status" class="status-msg"></div>
+        </form>
     </div>
 
-    <!-- PASSWORD GENERATOR (HIDDEN BY DEFAULT) -->
-    <div class="cyber-card" id="secureTools" style="display: none;">
+    <!-- PASSWORD GENERATOR (ALWAYS VISIBLE FOR TESTING) -->
+    <div class="cyber-card" id="secureTools">
         <h3 style="color: var(--brand-color); margin-bottom: 15px;">SECURE PASSWORD GEN</h3>
         <div class="input-field">
             <i class="fas fa-shield-alt"></i>
@@ -237,7 +235,6 @@
             <button id="generate-btn" class="glow-button">GENERATE</button>
             <button id="copy-btn" class="glow-button">COPY</button>
         </div>
-        <button onclick="location.reload()" class="glow-button" style="border-color: red; color: red; margin-top: 20px;">LOGOUT</button>
     </div>
 </section>
 
@@ -288,6 +285,7 @@ let textIdx = 0, charIdx = 0, isDeleting = false;
 
 function typeEffect() {
     const el = document.getElementById("type");
+    if(!el) return;
     const current = texts[textIdx];
     el.textContent = isDeleting ? current.substring(0, charIdx--) : current.substring(0, charIdx++);
     if (!isDeleting && charIdx > current.length) {
@@ -320,7 +318,7 @@ document.getElementById("loginForm").onsubmit = function(e) {
     }
 };
 
-/* PASSWORD GENERATOR - FULL WORKING VERSION */
+/* PASSWORD GENERATOR */
 function generateKey(length = 16) {
     const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
     let result = "";
@@ -330,7 +328,6 @@ function generateKey(length = 16) {
     document.getElementById("passDisplay").value = result;
 }
 
-// Click Listeners
 document.getElementById("generate-btn").onclick = function() {
     generateKey(16);
 };
@@ -340,8 +337,8 @@ document.getElementById("copy-btn").onclick = function() {
     if (copyText.value) {
         navigator.clipboard.writeText(copyText.value);
         alert("Security Key Copied! 🔥");
-    }
-};
+    } else {
+        alert("Generate a key first!");
     }
 };
 </script>
