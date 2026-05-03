@@ -11,159 +11,336 @@
 <style>
 :root {
 --brand-color: #00d9ff;
+--dark-void: #000b14;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Fira Code', monospace; background:#000; color:#fff; }
+html { scroll-behavior: smooth; }
 
+body {
+font-family: 'Fira Code', monospace;
+background: #000;
+color: #fff;
+overflow-x: hidden;
+}
+
+canvas {
+position: fixed;
+top: 0;
+left: 0;
+z-index: -1;
+}
+
+/* NAV */
 nav {
-display:flex;
-justify-content:space-between;
-padding:15px;
-border-bottom:1px solid var(--brand-color);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 8%;
+background: rgba(0,0,0,0.9);
+border-bottom: 1px solid var(--brand-color);
+position: fixed;
+width: 100%;
+z-index: 1000;
 }
 
-.nav-links a { color:var(--brand-color); margin-left:15px; text-decoration:none; }
+.logo {
+font-family: 'Orbitron', sans-serif;
+color: var(--brand-color);
+font-weight: bold;
+}
 
+.nav-links a {
+color: var(--brand-color);
+text-decoration: none;
+margin-left: 20px;
+font-size: 0.9rem;
+}
+
+.nav-links a:hover {
+text-shadow: 0 0 10px var(--brand-color);
+}
+
+/* HERO */
 .hero {
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
 }
 
-section { padding:60px 10%; }
+h1 {
+font-family: 'Orbitron';
+font-size: clamp(1.5rem,5vw,3rem);
+text-shadow: 0 0 20px var(--brand-color);
+}
+
+#type {
+color: var(--brand-color);
+margin-top: 10px;
+}
+
+/* SECTION */
+section { padding: 80px 10%; }
+
+h2 {
+color: var(--brand-color);
+border-left: 4px solid var(--brand-color);
+padding-left: 10px;
+margin-bottom: 20px;
+}
 
 .card {
-border:1px solid var(--brand-color);
-padding:20px;
-margin-bottom:10px;
+background: rgba(0,217,255,0.05);
+padding: 20px;
+border: 1px solid rgba(0,217,255,0.3);
+border-radius: 5px;
 }
 
-input {
-width:100%;
-padding:10px;
-margin-bottom:10px;
-background:#001521;
-border:1px solid var(--brand-color);
-color:#fff;
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+gap: 15px;
 }
 
-button {
-padding:10px;
-border:1px solid var(--brand-color);
-background:transparent;
-color:var(--brand-color);
-cursor:pointer;
+/* LOGIN */
+.cyber-card {
+background: rgba(0,11,20,0.9);
+border: 1px solid var(--brand-color);
+padding: 25px;
+border-radius: 8px;
+max-width: 400px;
+margin: auto;
+}
+
+.input-field {
+position: relative;
+margin-bottom: 15px;
+}
+
+.input-field i {
+position: absolute;
+left: 10px;
+top: 50%;
+transform: translateY(-50%);
+color: var(--brand-color);
+}
+
+.input-field input {
+width: 100%;
+padding: 12px 12px 12px 35px;
+background: #001521;
+border: 1px solid var(--brand-color);
+color: #fff;
+}
+
+.glow-button {
+width: 100%;
+padding: 12px;
+border: 2px solid var(--brand-color);
+background: transparent;
+color: var(--brand-color);
+cursor: pointer;
 margin-top:5px;
 }
 
-button:hover {
-background:var(--brand-color);
-color:#000;
+.glow-button:hover {
+background: var(--brand-color);
+color: #000;
+}
+
+.status-msg {
+margin-top: 10px;
+text-align: center;
+font-size: 0.85rem;
 }
 </style>
 </head>
 
 <body>
 
+<canvas id="matrix"></canvas>
+
 <nav>
-<div>ASADIT96</div>
+<div class="logo">ASADIT96</div>
 <div class="nav-links">
 <a href="#about">ABOUT</a>
+<a href="#skills">SKILLS</a>
 <a href="#projects">PROJECTS</a>
+<a href="#contact">CONTACT</a>
 </div>
 </nav>
 
 <div class="hero">
 <h1>ASADUZZAMAN LIKHON</h1>
 <p id="type"></p>
+<br>
+<a href="#contact"><button class="glow-button" style="width:200px;">HIRE ME</button></a>
 </div>
 
 <section id="about">
+<h2>ABOUT</h2>
 <div class="card">
 Cyber Security Learner 🔐 | Web Developer 💻
 </div>
 </section>
 
-<section id="projects">
+<section id="skills">
+<h2>SKILLS</h2>
+<div class="grid">
+<div class="card">HTML / CSS</div>
+<div class="card">JavaScript</div>
+<div class="card">Linux</div>
+<div class="card">Networking</div>
+</div>
+</section>
 
-<!-- LOGIN -->
-<div class="card">
-<h3>LOGIN</h3>
-<input id="accessId" placeholder="ACCESS ID">
-<input id="securityKey" type="password" placeholder="SECURITY CODE">
-<button id="loginBtn">LOGIN</button>
-<p id="status"></p>
+<section id="projects">
+<h2>PROJECTS</h2>
+
+<div class="cyber-card">
+<form id="loginForm">
+<h3 style="color: var(--brand-color); margin-bottom: 15px;">SYSTEM LOGIN</h3>
+
+<div class="input-field">
+<i class="fas fa-user"></i>
+<input type="text" id="accessId" placeholder="ACCESS ID" required>
 </div>
 
-<!-- PASSWORD GENERATOR -->
-<div class="card">
-<h3>PASSWORD GENERATOR</h3>
-<input id="passDisplay" readonly>
-<button id="generate-btn">GENERATE</button>
-<button id="copy-btn">COPY</button>
+<div class="input-field">
+<i class="fas fa-key"></i>
+<input type="password" id="securityKey" placeholder="SECURITY CODE" required>
+</div>
+
+<button type="submit" class="glow-button">LOGIN</button>
+<div id="status" class="status-msg"></div>
+</form>
+</div>
+
+<div class="cyber-card" style="margin-top:20px;">
+<h3 style="color: var(--brand-color); margin-bottom: 15px;">SECURE PASSWORD GEN</h3>
+
+<div class="input-field">
+<i class="fas fa-shield-alt"></i>
+<input type="text" id="passDisplay" placeholder="GENERATE PASSWORD" readonly>
+</div>
+
+<button id="generate-btn" class="glow-button">GENERATE</button>
+<button id="copy-btn" class="glow-button">COPY</button>
 </div>
 
 </section>
 
-<script>
+<section id="contact">
+<h2>CONTACT</h2>
+<div class="card">
+Email: likhonzaman96@gmail.com<br>
+GitHub: <a href="https://github.com/asadit96" target="_blank" style="color:#00d9ff;">asadit96</a>
+</div>
+</section>
 
-/* TYPE EFFECT */
-let texts=["ACCESS GRANTED","SYSTEM READY","HIRE ME"];
+<footer style="text-align:center;padding:20px;">
+© 2026 Built by Asaduzzaman Likhon
+</footer>
+
+<script>
+/* TYPE */
+const texts=["ACCESS GRANTED","SYSTEM READY","HIRE ME"];
 let i=0,j=0,del=false;
 
 function type(){
-let el=document.getElementById("type");
-let cur=texts[i];
+const el=document.getElementById("type");
+const cur=texts[i];
 
 j=del?j-1:j+1;
 el.textContent=cur.substring(0,j);
 
 if(!del && j===cur.length){del=true;setTimeout(type,1000);}
-else if(del && j===0){del=false;i=(i+1)%texts.length;}
-setTimeout(type,100);
+else if(del && j===0){del=false;i=(i+1)%texts.length;setTimeout(type,300);}
+else{setTimeout(type,del?50:100);}
 }
-type();
 
-/* LOGIN FIX */
-document.getElementById("loginBtn").onclick = function(){
+/* MATRIX */
+const c=document.getElementById("matrix");
+const ctx=c.getContext("2d");
+
+let drops,cols;
+
+function resize(){
+c.width=innerWidth;
+c.height=innerHeight;
+cols=Math.floor(c.width/20);
+drops=new Array(cols).fill(1);
+ctx.font="15px monospace"; /* FIX */
+}
+resize();
+addEventListener("resize",resize);
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,c.width,c.height);
+
+ctx.fillStyle="#00d9ff";
+
+for(let x=0;x<drops.length;x++){
+let t=Math.random()>0.5?"0":"1";
+ctx.fillText(t,x*20,drops[x]*20);
+
+if(drops[x]*20>c.height && Math.random()>0.975) drops[x]=0;
+drops[x]++;
+}
+}
+
+/* LOGIN */
+const loginForm=document.getElementById("loginForm");
+if(loginForm){
+loginForm.addEventListener("submit",function(e){
+e.preventDefault();
+
 let id=document.getElementById("accessId").value.trim().toLowerCase();
 let key=document.getElementById("securityKey").value.trim();
 let s=document.getElementById("status");
 
+s.innerText="AUTHENTICATING...";
+s.style.color="#00d9ff";
+
+setTimeout(()=>{
 if(id==="asadit96" && key==="likhon96"){
 s.innerText="ACCESS GRANTED";
-s.style.color="#00ff88";
+s.style.color="#00ffaa";
 }else{
 s.innerText="ACCESS DENIED";
 s.style.color="red";
 }
-};
-
-/* PASSWORD GENERATOR FIX */
-function generateSecurityKey(length = 16) {
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
-    let key = "";
-    for (let i = 0; i < length; i++) {
-        key += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    document.getElementById("passDisplay").value = key;
+},1000);
+});
 }
 
-document.getElementById("generate-btn").onclick = function() {
-    generateSecurityKey(16);
-};
+/* PASSWORD GEN */
+function generateSecurityKey(length=16){
+const chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+let key="";
+for(let i=0;i<length;i++){
+key+=chars[Math.floor(Math.random()*chars.length)];
+}
+document.getElementById("passDisplay").value=key;
+}
 
-document.getElementById("copy-btn").onclick = function() {
-    let val = document.getElementById("passDisplay").value;
-    if (val) {
-        navigator.clipboard.writeText(val);
-        alert("Copied 🔥");
-    }
-};
+function copyKey(){
+const val=document.getElementById("passDisplay").value;
+if(val){
+navigator.clipboard.writeText(val);
+alert("Copied 🔥");
+}
+}
 
+document.getElementById("generate-btn")?.addEventListener("click",generateSecurityKey);
+document.getElementById("copy-btn")?.addEventListener("click",copyKey);
+
+setInterval(draw,50);
+type();
 </script>
 
 </body>
