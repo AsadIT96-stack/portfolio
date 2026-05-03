@@ -349,8 +349,7 @@ navigator.clipboard.writeText(copyText.value);
 alert("Security Key Copied!");
 }
 }
-setInterval(draw,50);
-type();
+
 document.getElementById('generate-btn').addEventListener('click', displayKey);
 document.getElementById('copy-btn').addEventListener('click', copyKey);
 const loginForm = document.getElementById('loginForm');
@@ -360,7 +359,7 @@ const securityKey = document.getElementById('securityKey');
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    if (securityKey.value === "1234") {
+    if (securityKey.value === "likhon96") {
         loginForm.parentElement.style.display = 'none';
         projectSection.style.display = 'block';
         alert("Access Granted, Likhon!");
@@ -373,6 +372,8 @@ function logout() {
     location.reload();
 }
 
+setInterval(draw,50);
+type();
 </script>
 
 </body>
