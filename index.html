@@ -273,7 +273,6 @@ function drawMatrix() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#00d9ff";
     ctx.font = "15px monospace";
-
     for (let i = 0; i < drops.length; i++) {
         const text = Math.random() > 0.5 ? "0" : "1";
         ctx.fillText(text, i * 20, drops[i] * 20);
@@ -290,9 +289,7 @@ let textIdx = 0, charIdx = 0, isDeleting = false;
 function typeEffect() {
     const el = document.getElementById("type");
     const current = texts[textIdx];
-    
     el.textContent = isDeleting ? current.substring(0, charIdx--) : current.substring(0, charIdx++);
-
     if (!isDeleting && charIdx > current.length) {
         isDeleting = true;
         setTimeout(typeEffect, 1500);
@@ -307,45 +304,44 @@ function typeEffect() {
 typeEffect();
 
 /* LOGIN SYSTEM */
-document.getElementById("loginBtn").onclick = function() {
+document.getElementById("loginForm").onsubmit = function(e) {
+    e.preventDefault();
     const id = document.getElementById("accessId").value.trim().toLowerCase();
     const key = document.getElementById("securityKey").value.trim();
     const status = document.getElementById("status");
 
-    status.innerText = "AUTHENTICATING...";
-    status.style.color = "var(--brand-color)";
-
-    setTimeout(() => {
-        if (id === "asadit96" && key === "likhon96") {
-            document.getElementById("loginArea").style.display = "none";
-            document.getElementById("secureTools").style.display = "block";
-            alert("Welcome back, Likhon!");
-        } else {
-            status.innerText = "ACCESS DENIED: INVALID CREDENTIALS";
-            status.style.color = "red";
-        }
-    }, 1000);
+    if (id === "asadit96" && key === "likhon96") {
+        status.innerText = "ACCESS GRANTED";
+        status.style.color = "#00ffaa";
+        alert("Welcome, Likhon!");
+    } else {
+        status.innerText = "ACCESS DENIED";
+        status.style.color = "red";
+    }
 };
 
-/* PASSWORD GENERATOR */
+/* PASSWORD GENERATOR - FULL WORKING VERSION */
 function generateKey(length = 16) {
     const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
-    let retVal = "";
-    for (let i = 0; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * charset.length));
+    let result = "";
+    for (let i = 0; i < length; i++) {
+        result += charset.charAt(Math.floor(Math.random() * charset.length));
     }
-    document.getElementById("passDisplay").value = retVal;
+    document.getElementById("passDisplay").value = result;
 }
 
-document.getElementById("generate-btn").onclick = () => generateKey(16);
+// Click Listeners
+document.getElementById("generate-btn").onclick = function() {
+    generateKey(16);
+};
 
 document.getElementById("copy-btn").onclick = function() {
     const copyText = document.getElementById("passDisplay");
     if (copyText.value) {
         navigator.clipboard.writeText(copyText.value);
-        const originalText = this.innerText;
-        this.innerText = "COPIED!";
-        setTimeout(() => this.innerText = originalText, 1500);
+        alert("Security Key Copied! 🔥");
+    }
+};
     }
 };
 </script>
