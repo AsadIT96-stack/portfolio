@@ -12,7 +12,6 @@
 :root {
 --brand-color: #00d9ff;
 --dark-void: #000b14;
---glow-color: rgba(0, 217, 255, 0.4);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -144,6 +143,7 @@ border: 2px solid var(--brand-color);
 background: transparent;
 color: var(--brand-color);
 cursor: pointer;
+margin-top:5px;
 }
 
 .glow-button:hover {
@@ -193,64 +193,54 @@ Cyber Security Learner 🔐 | Web Developer 💻
 <div class="card">HTML / CSS</div>
 <div class="card">JavaScript</div>
 <div class="card">Linux</div>
-<div class="card">Networking</div>     
+<div class="card">Networking</div>
 </div>
 </section>
 
 <section id="projects">
 <h2>PROJECTS</h2>
-     <!-- Login Card -->
+
 <div class="cyber-card">
-        <form id="loginForm">
-            <h3 style="color: var(--brand-color); margin-bottom: 15px;">SYSTEM LOGIN</h3>
-            <div class="input-field">
-                <i class="fas fa-user"></i>
-                <input type="text" id="accessId" placeholder="ACCESS ID" required>
-            </div>
-            <div class="input-field">
-                <i class="fas fa-key"></i>
-                <input type="password" id="securityKey" placeholder="SECURITY CODE" required>
-            </div>
-            <button type="submit" class="glow-button">LOGIN</button>
-            <div id="status" class="status-msg"></div>
-        </form>
-    </div>
-     
- <section id="projects">
-    <h3>PROJECTS</h3>
-    <!-- Cyber Card / Password Gen -->
-    <div class="cyber-card" style="margin-top: 20px;">
-        <h3 style="color: var(--brand-color); margin-bottom: 15px;">SECURE PASSWORD GEN</h3>
-        <div class="input-field">
-            <i class="fas fa-shield-alt"></i>
-            <input type="text" id="passDisplay" placeholder="GENERATE PASSWORD" readonly>
-        </div>
-        
-        <div class="cube-button-container">
-            <div class="scene">
-                <button type="button" id="generate-btn" class="cube-button">
-                    <span class="front">GENERATE</span>
-                    <span class="bottom">CREATE KEY</span>
-                </button>
-            </div>
-            <div class="scene">
-                <button type="button" id="copy-btn" class="cube-button">
-                    <span class="front">COPY</span>
-                    <span class="bottom">CLIPBOARD</span>
-                </button>
-            </div>
-        </div>
-    </div>
+<form id="loginForm">
+<h3 style="color: var(--brand-color); margin-bottom: 15px;">SYSTEM LOGIN</h3>
+
+<div class="input-field">
+<i class="fas fa-user"></i>
+<input type="text" id="accessId" placeholder="ACCESS ID" required>
+</div>
+
+<div class="input-field">
+<i class="fas fa-key"></i>
+<input type="password" id="securityKey" placeholder="SECURITY CODE" required>
+</div>
+
+<button type="submit" class="glow-button">LOGIN</button>
+<div id="status" class="status-msg"></div>
+</form>
+</div>
+
+<div class="cyber-card" style="margin-top:20px;">
+<h3 style="color: var(--brand-color); margin-bottom: 15px;">SECURE PASSWORD GEN</h3>
+
+<div class="input-field">
+<i class="fas fa-shield-alt"></i>
+<input type="text" id="passDisplay" placeholder="GENERATE PASSWORD" readonly>
+</div>
+
+<button id="generate-btn" class="glow-button">GENERATE</button>
+<button id="copy-btn" class="glow-button">COPY</button>
+</div>
+
 </section>
 
 <section id="contact">
 <h2>CONTACT</h2>
 <div class="card">
 Email: likhonzaman96@gmail.com<br>
-GitHub: <a href="https://github.com/asadit96" target="_blank">asadit96</a>
+GitHub: <a href="https://github.com/asadit96" target="_blank" style="color:#00d9ff;">asadit96</a>
 </div>
-          
 </section>
+
 <footer style="text-align:center;padding:20px;">
 © 2026 Built by Asaduzzaman Likhon
 </footer>
@@ -261,8 +251,8 @@ const texts=["ACCESS GRANTED","SYSTEM READY","HIRE ME"];
 let i=0,j=0,del=false;
 
 function type(){
-let el=document.getElementById("type");
-let cur=texts[i];
+const el=document.getElementById("type");
+const cur=texts[i];
 
 j=del?j-1:j+1;
 el.textContent=cur.substring(0,j);
@@ -283,6 +273,7 @@ c.width=innerWidth;
 c.height=innerHeight;
 cols=Math.floor(c.width/20);
 drops=new Array(cols).fill(1);
+ctx.font="15px monospace"; /* FIX */
 }
 resize();
 addEventListener("resize",resize);
@@ -302,12 +293,14 @@ drops[x]++;
 }
 }
 
-/* LOGIN FIXED */
-document.getElementById("loginForm").addEventListener("submit",function(e){
+/* LOGIN */
+const loginForm=document.getElementById("loginForm");
+if(loginForm){
+loginForm.addEventListener("submit",function(e){
 e.preventDefault();
 
-let id=this[0].value.trim().toLowerCase();
-let key=this[1].value.trim();
+let id=document.getElementById("accessId").value.trim().toLowerCase();
+let key=document.getElementById("securityKey").value.trim();
 let s=document.getElementById("status");
 
 s.innerText="AUTHENTICATING...";
@@ -322,55 +315,29 @@ s.innerText="ACCESS DENIED";
 s.style.color="red";
 }
 },1000);
-
 });
-function generateSecurityKey(length = 16) {
-const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-let key = "";
-for (let i = 0; i < length; i++) {
-key += chars.charAt(Math.floor(Math.random() * chars.length));
-}
-return key;
 }
 
-function displayKey() {
-const key = generateSecurityKey(16);
-const display = document.getElementById("passDisplay");
-if(display) {
-display.value = key;
+/* PASSWORD GEN */
+function generateSecurityKey(length=16){
+const chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+let key="";
+for(let i=0;i<length;i++){
+key+=chars[Math.floor(Math.random()*chars.length)];
 }
+document.getElementById("passDisplay").value=key;
 }
 
-  function copyKey() {
-const copyText = document.getElementById("passDisplay");
-if (copyText && copyText.value !== "" && copyText.value !== "CLICK GENERATE") {
-copyText.select();
-navigator.clipboard.writeText(copyText.value);
-alert("Security Key Copied!");
+function copyKey(){
+const val=document.getElementById("passDisplay").value;
+if(val){
+navigator.clipboard.writeText(val);
+alert("Copied 🔥");
 }
 }
 
-document.getElementById('generate-btn').addEventListener('click', displayKey);
-document.getElementById('copy-btn').addEventListener('click', copyKey);
-const loginForm = document.getElementById('loginForm');
-const projectSection = document.getElementById('projects');
-const securityKey = document.getElementById('securityKey');
-
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    if (securityKey.value === "likhon96") {
-        loginForm.parentElement.style.display = 'none';
-        projectSection.style.display = 'block';
-        alert("Access Granted, Likhon!");
-    } else {
-        alert("Invalid Security Code!");
-    }
-});
-
-function logout() {
-    location.reload();
-}
+document.getElementById("generate-btn")?.addEventListener("click",generateSecurityKey);
+document.getElementById("copy-btn")?.addEventListener("click",copyKey);
 
 setInterval(draw,50);
 type();
@@ -378,4 +345,3 @@ type();
 
 </body>
 </html>
-
